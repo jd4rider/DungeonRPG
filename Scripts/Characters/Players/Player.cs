@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using static GameConstants;
 
 public partial class Player : CharacterBody3D
 {
@@ -9,7 +10,7 @@ public partial class Player : CharacterBody3D
 
     public override void _Ready() 
     {
-        animPlayerNode.Play("Idle");
+        animPlayerNode.Play(ANIM_IDLE);
     }
     private Vector2 direction = new();
     public override void _PhysicsProcess(double delta)
@@ -23,12 +24,12 @@ public partial class Player : CharacterBody3D
     public override void _Input(InputEvent @event)
     {
         direction = Input.GetVector(
-            "MoveLeft", "MoveRight", "MoveForward", "MoveBackward"
+            INPUT_MOVE_LEFT, INPUT_MOVE_RIGHT, INPUT_MOVE_FORWARD, INPUT_MOVE_BACKWARD
         );
 
         if (direction == Vector2.Zero) {
-            animPlayerNode.Play("Idle");
-        } else animPlayerNode.Play("Move");
+            animPlayerNode.Play(ANIM_IDLE);
+        } else animPlayerNode.Play(ANIM_MOVE);
     }
 
 
