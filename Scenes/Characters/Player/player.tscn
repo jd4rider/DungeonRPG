@@ -1,6 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://cw1yf5yd2fb7b"]
+[gd_scene load_steps=34 format=3 uid="uid://cw1yf5yd2fb7b"]
 
 [ext_resource type="Texture2D" uid="uid://ba74c85vuyqtn" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_003.png" id="1_0ai5r"]
+[ext_resource type="Script" path="res://Scripts/Characters/Players/Player.cs" id="1_dk55w"]
 [ext_resource type="Texture2D" uid="uid://difsd0mpfka5i" path="res://Assets/Sprites/Characters/Player/Running/Running_003.png" id="1_gp1e5"]
 [ext_resource type="Texture2D" uid="uid://d1kbuymui4qce" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_001.png" id="2_pd1df"]
 [ext_resource type="Texture2D" uid="uid://cq042gy31kh3g" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_002.png" id="3_kdmcv"]
@@ -71,9 +72,10 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_dk55w")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-texture = ExtResource("27_ttigy")
+texture = ExtResource("13_023ae")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
