@@ -10,6 +10,7 @@ public partial class PlayerMoveState : Node
     {
         characterNode = GetOwner<Player>();
         SetPhysicsProcess(false);
+        SetProcessInput(false);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -28,7 +29,20 @@ public partial class PlayerMoveState : Node
         {
             characterNode.animPlayerNode.Play(ANIM_MOVE);
             SetPhysicsProcess(true);
+            SetProcessInput(true);
         }
-        else if (what == 5002) SetPhysicsProcess(false);
+        else if (what == 5002)
+        {
+            SetPhysicsProcess(false);
+            SetProcessInput(false);
+        }
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (Input.IsActionJustPressed(INPUT_DASH))
+        {
+            characterNode.stateMachineNode.SwitchState<PlayerDashState>();
+        }
     }
 }
