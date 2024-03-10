@@ -5,11 +5,13 @@ using static GameConstants;
 public partial class PlayerDashState : Node
 {
     private Player characterNode;
+    [Export] private Timer dashTimerNode;
 
     public override void _Ready()
     {
         characterNode = GetOwner<Player>();
-        //SetPhysicsProcess(false);
+        dashTimerNode.Timeout += HandleDashTimeout;
+        SetPhysicsProcess(false);
     }
 
     public override void _Notification(int what)
@@ -19,9 +21,15 @@ public partial class PlayerDashState : Node
         if (what == 5001)
         {
             characterNode.animPlayerNode.Play(ANIM_DASH);
-            //SetPhysicsProcess(true);
+            dashTimerNode.Start();
+            SetPhysicsProcess(true);
         }
-        //else if (what == 5002) SetPhysicsProcess(false);
+        else if (what == 5002) SetPhysicsProcess(false);
+    }
+
+    private void HandleDashTimeout()
+    {
+        characterNode.stateMachineNode.SwitchState<PlayerIdleState>();
     }
 }
 
