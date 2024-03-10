@@ -2,17 +2,8 @@ using Godot;
 using System;
 using static GameConstants;
 
-public partial class PlayerIdleState : Node
+public partial class PlayerIdleState : PlayerState
 {
-    private Player characterNode;
-
-    public override void _Ready()
-    {
-        characterNode = GetOwner<Player>();
-        SetPhysicsProcess(false);
-        //SetProcessInput(false);
-    }
-
     public override void _PhysicsProcess(double delta)
     {
         if (characterNode.direction != Vector2.Zero)
@@ -22,28 +13,17 @@ public partial class PlayerIdleState : Node
 
     }
 
-    public override void _Notification(int what)
-    {
-        base._Notification(what);
-
-        if (what == 5001)
-        {
-            characterNode.animPlayerNode.Play(ANIM_IDLE);
-            SetPhysicsProcess(true);
-            SetProcessInput(true);
-        }
-        else if (what == 5002)
-        {
-            SetPhysicsProcess(false);
-            SetProcessInput(false);
-        }
-    }
-
     public override void _Input(InputEvent @event)
     {
         if (Input.IsActionJustPressed(INPUT_DASH))
         {
             characterNode.stateMachineNode.SwitchState<PlayerDashState>();
         }
+    }
+
+    protected override void EnterState()
+    {
+        base.EnterState();
+        characterNode.animPlayerNode.Play(ANIM_IDLE);
     }
 }
