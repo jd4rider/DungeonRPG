@@ -41,6 +41,22 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Players/PlayerMoveState.cs" id="39_sfigr"]
 [ext_resource type="Script" path="res://Scripts/Characters/Players/PlayerDashState.cs" id="40_lfdg4"]
 
+[sub_resource type="Animation" id="Animation_ocbpk"]
+resource_name = "Dash"
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("32_v8cs5"), ExtResource("33_dn0sp"), ExtResource("34_wvylg"), ExtResource("35_lpb1w"), ExtResource("36_3xpvn"), ExtResource("2_nge3j")]
+}
+
 [sub_resource type="Animation" id="Animation_f2hym"]
 resource_name = "Idle"
 loop_mode = 1
@@ -75,22 +91,6 @@ tracks/0/keys = {
 "values": [ExtResource("20_usnbv"), ExtResource("21_glets"), ExtResource("1_gp1e5"), ExtResource("22_0df21"), ExtResource("23_fjo4u"), ExtResource("24_87xi0"), ExtResource("25_vku5y"), ExtResource("26_kp0ck"), ExtResource("27_ttigy"), ExtResource("28_8q21u"), ExtResource("15_wja2x"), ExtResource("29_rtqsm")]
 }
 
-[sub_resource type="Animation" id="Animation_ocbpk"]
-resource_name = "Dash"
-step = 0.166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("32_v8cs5"), ExtResource("33_dn0sp"), ExtResource("34_wvylg"), ExtResource("35_lpb1w"), ExtResource("36_3xpvn"), ExtResource("2_nge3j")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_beg6f"]
 _data = {
 "Dash": SubResource("Animation_ocbpk"),
@@ -106,7 +106,7 @@ stateMachineNode = NodePath("StateMachine")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture_filter = 0
-texture = ExtResource("1_0ai5r")
+texture = ExtResource("32_v8cs5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
