@@ -11,7 +11,7 @@ public partial class PlayerMoveState : PlayerState
     {
         if (characterNode.direction == Vector2.Zero)
         {
-            characterNode.stateMachineNode.SwitchState<PlayerIdleState>();
+            characterNode.StateMachineNode.SwitchState<PlayerIdleState>();
             return;
         }
         characterNode.Velocity = new(characterNode.direction.X, 0, characterNode.direction.Y);
@@ -26,14 +26,14 @@ public partial class PlayerMoveState : PlayerState
     {
         base.EnterState();
 
-        characterNode.animPlayerNode.Play(ANIM_MOVE);
+        characterNode.AnimPlayerNode.Play(ANIM_MOVE);
     }
 
     public override void _Input(InputEvent @event)
     {
         if (Input.IsActionJustPressed(INPUT_DASH))
         {
-            characterNode.stateMachineNode.SwitchState<PlayerDashState>();
+            characterNode.StateMachineNode.SwitchState<PlayerDashState>();
         }
     }
 }
